@@ -188,28 +188,59 @@ brew services start redis
 redis-cli ping   # PONG
 ```
 
-### 3. Set Up the Backend
+### 3. Install Root Dependencies
 
 ```bash
-cd server
+# From the project root — installs concurrently for running both servers together
 npm install
-# Fill in server/.env with your credentials
+```
+
+### 4. Set Up Environment Variables
+
+```bash
+# Backend — copy the example and fill in your credentials
+cp server/.env.example server/.env
+
+# Frontend — copy the example (default value works for local dev)
+cp client/.env.example client/.env.local
+```
+
+Edit `server/.env` with your actual **MongoDB URI** and **Groq API Key**.
+
+### 5. Install Sub-project Dependencies
+
+```bash
+npm run install:all
+```
+
+Or manually:
+
+```bash
+cd server && npm install
+cd ../client && npm install
+```
+
+### 6. Seed the Database (Optional)
+
+```bash
+npm run seed
+```
+
+### 7. Run Both Servers Together
+
+```bash
+# From the project root — starts backend (port 5000) and frontend (port 3000) concurrently
 npm run dev
 ```
 
-Backend runs at: `http://localhost:5000`
-
-### 4. Set Up the Frontend
+Or start them individually:
 
 ```bash
-cd client
-npm install
-npm run dev
+npm run dev:backend   # Express server on port 5000
+npm run dev:frontend  # Next.js on port 3000
 ```
 
-Frontend runs at: `http://localhost:3000`
-
-### 5. Verify
+### 8. Verify
 
 | Service | Check |
 |---|---|
