@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Filter, RotateCcw } from 'lucide-react';
+import { Filter, RotateCcw } from '../ui/Icons';
+
 import { JobFilters } from '@/types/job';
 import Button from '../ui/Button';
 

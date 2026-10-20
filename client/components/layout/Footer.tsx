@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
-import { Briefcase } from 'lucide-react';
+import { Briefcase } from '../ui/Icons';
+
 
 export const Footer: React.FC = () => {
   return (

@@ -2,7 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Sparkles } from 'lucide-react';
+import { ArrowLeft, Sparkles } from '@/components/ui/Icons';
+
 import JobForm from '@/components/forms/JobForm';
 
 export default function NewJobPage() {

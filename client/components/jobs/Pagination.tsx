@@ -1,5 +1,6 @@
 import React from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from '../ui/Icons';
+
 import clsx from 'clsx';
 import { Pagination as PaginationType } from '@/types/job';
 

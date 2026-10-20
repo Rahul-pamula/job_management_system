@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Sparkles, Check, X, AlertCircle } from 'lucide-react';
+import { Sparkles, Check, X, AlertCircle } from '../ui/Icons';
+
 import { improveDescription } from '@/lib/api';
 import Button from '../ui/Button';
 

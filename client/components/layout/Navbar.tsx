@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, PlusCircle, Briefcase } from 'lucide-react';
+import { Menu, X, PlusCircle, Briefcase } from '../ui/Icons';
+
 import clsx from 'clsx';
 import Button from '../ui/Button';
 

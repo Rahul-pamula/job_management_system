@@ -1,5 +1,6 @@
 import React from 'react';
-import { SearchX } from 'lucide-react';
+import { SearchX } from './Icons';
+
 import Button from './Button';
 
 interface EmptyStateProps {

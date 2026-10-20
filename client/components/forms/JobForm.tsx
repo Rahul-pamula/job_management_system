@@ -5,7 +5,8 @@ import { useRouter } from 'next/navigation';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Send, CheckCircle2 } from 'lucide-react';
+import { Send, CheckCircle2 } from '../ui/Icons';
+
 import Button from '../ui/Button';
 import RichTextEditor from './RichTextEditor';
 import SkillsInput from './SkillsInput';

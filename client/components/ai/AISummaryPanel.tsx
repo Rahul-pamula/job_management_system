@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Sparkles, AlertCircle, RefreshCw } from 'lucide-react';
+import { Sparkles, AlertCircle, RefreshCw } from '../ui/Icons';
+
 import { generateSummary } from '@/lib/api';
 import Button from '../ui/Button';
 

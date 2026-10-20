@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Search, MapPin, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
+import { Search, MapPin, ArrowRight, CheckCircle2, Sparkles } from '@/components/ui/Icons';
+
 import { Job } from '@/types/job';
 import { getJobs } from '@/lib/api';
 import JobCard from '@/components/jobs/JobCard';

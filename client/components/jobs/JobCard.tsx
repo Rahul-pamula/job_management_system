@@ -3,7 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { formatDistanceToNow } from 'date-fns';
-import { MapPin, Briefcase, Clock } from 'lucide-react';
+import { MapPin, Briefcase, Clock } from '../ui/Icons';
+
 import { Job } from '@/types/job';
 import Badge from '../ui/Badge';
 

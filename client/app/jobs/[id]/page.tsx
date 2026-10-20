@@ -12,7 +12,8 @@ import {
   Calendar,
   GraduationCap,
   Building,
-} from 'lucide-react';
+} from '@/components/ui/Icons';
+
 import { getJobById } from '@/lib/api';
 import { Job } from '@/types/job';
 import Badge from '@/components/ui/Badge';
