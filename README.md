@@ -7,18 +7,15 @@
 [![Groq AI](https://img.shields.io/badge/AI%20Inference-Groq%20LLaMA--3.3-F55036?logo=groq)](https://groq.com)
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind%20CSS-38B2AC?logo=tailwind-css)](https://tailwindcss.com)
 
-A production-grade, full-stack job discovery and publishing platform featuring a **Pinterest-inspired minimal white aesthetic**, multi-field filtering, 10-job pagination, and integrated **Groq LLaMA-3.3 AI** assistance with background **BullMQ + Redis** queuing.
-
-> **Evaluation Task**: Fresher Full Stack Developer (MERN) Assignment — AI-Powered Job Management System with Filters & Job Detail Page.
+A production-grade, full-stack job discovery and publishing platform featuring a modern minimalist responsive interface, multi-field filtering, 10-job pagination, and integrated **Groq LLaMA-3.3 AI** assistance with background **BullMQ + Redis** queuing.
 
 ---
 
 ## 📋 Table of Contents
 
-- [Live Demo & Screenshots](#-live-demo--preview)
-- [Assignment Compliance Checklist](#-assignment-compliance-matrix)
+- [Live Production Links](#-live-production-links)
 - [System Architecture](#-system-architecture)
-- [Features Overview](#-features-overview)
+- [Key Features](#-key-features)
 - [Tech Stack](#-tech-stack)
 - [Project Directory Structure](#-project-directory-structure)
 - [Environment Configuration](#-environment-configuration)
@@ -29,66 +26,46 @@ A production-grade, full-stack job discovery and publishing platform featuring a
 
 ---
 
-## 🌟 Live Demo & Preview
+## 🌟 Live Production Links
 
-- **Web Frontend**: [Deploy to Vercel Guide](#frontend-deployment-on-vercel)
-- **API Backend**: [Deploy to Render Guide](#backend-deployment-on-render)
-- **Design Philosophy**: Minimalist white canvas, refined Inter typography, responsive full-viewport width, subtle drop shadows, and high-contrast dark accents.
-
----
-
-## ✅ Assignment Compliance Matrix
-
-| Assignment Requirement | Implementation Status | Verified Implementation |
-|---|:---:|---|
-| **Next.js Frontend (App Router)** | ✅ **100% Complete** | Next.js 14, Tailwind CSS, Lucide icons, responsive full-width layout |
-| **Node.js + Express Backend** | ✅ **100% Complete** | Modular Express REST API, Zod query validation, CORS & Helmet security |
-| **MongoDB + Mongoose ODM** | ✅ **100% Complete** | Strict schema, compound indexes, pagination, auto timestamps |
-| **Job Creation with Conditional Location** | ✅ **100% Complete** | React Hook Form, Country/City conditional on WFO/Hybrid, hidden for WFH |
-| **Rich Text HTML Editor** | ✅ **100% Complete** | React Quill (SSR-safe dynamic import), `sanitize-html` & `DOMPurify` protection |
-| **"Improve with AI" Feature** | ✅ **100% Complete** | Groq LLaMA-3.3-70b prompt, live preview box with Apply/Discard controls |
-| **Job Directory with 7 Filters** | ✅ **100% Complete** | Title, Company, Category, Location Type, Skills ($in), Experience Min/Max |
-| **10-Job Pagination** | ✅ **100% Complete** | Page 1 reset on filter changes, total counts feedback, numbered pagination |
-| **Job Details Page with On-Demand AI Summary** | ✅ **100% Complete** | `/jobs/:id` route, sanitized HTML rendering, dedicated "✨ AI Summary" button |
-| **BullMQ + Redis Queue Processing** | ✅ **100% Complete** | Background queue `ai-processing`, worker concurrency, failure handling |
-| **15 Seeded Jobs (Hyderabad & Bangalore)** | ✅ **100% Complete** | Real positions for Google, Microsoft, Amazon, Flipkart, Swiggy, Zerodha |
+- 🌐 **Live Web Application**: [https://job-management-system-steel.vercel.app](https://job-management-system-steel.vercel.app)
+- ⚙️ **Production Backend API**: [https://jobshuru-backend.onrender.com](https://jobshuru-backend.onrender.com)
+- 🩺 **API Health Check**: [https://jobshuru-backend.onrender.com/api/health](https://jobshuru-backend.onrender.com/api/health)
 
 ---
 
 ## 🏗 System Architecture
 
-```
-                    ┌────────────────────────────────────────┐
-                    │          Client Browser (Next.js 14)   │
-                    │   - Pinterest Minimal White UI         │
-                    │   - Full-Screen Viewport Layout        │
-                    │   - React Hook Form + Quill + DOMPurify│
-                    └───────────────────┬────────────────────┘
-                                        │ HTTP / JSON (Axios)
-                                        ▼
-                    ┌────────────────────────────────────────┐
-                    │        Express REST API (Port 5001)    │
-                    │   - Helmet, CORS, Rate Limiter         │
-                    │   - Zod Request Validation             │
-                    │   - HTML Sanitizer (sanitize-html)     │
-                    └───────┬────────────────────────┬───────┘
-                            │                        │
-               Mongoose ODM │                        │ BullMQ Queue
-                            ▼                        ▼
-               ┌───────────────────────┐  ┌───────────────────────┐
-               │     MongoDB Atlas     │  │      Redis Store      │
-               │  - Strict Job Schema  │  │  (localhost:6379 or   │
-               │  - Filter & Text Index│  │   Managed Upstash)    │
-               └───────────────────────┘  └──────────┬────────────┘
-                                                     │ Worker Pops
-                                                     ▼
-                                          ┌───────────────────────┐
-                                          │      Groq Cloud       │
-                                          │  LLaMA-3.3-70b Engine │
-                                          │  - Description Refine │
-                                          │  - Role Summarization │
-                                          └───────────────────────┘
-```
+<p align="center">
+  <img src="docs/architecture-diagram.png" alt="JobShuru System Architecture" width="550" />
+</p>
+
+The system follows a clean modular architecture:
+1. **Next.js 14 Client**: Renders the responsive full-screen UI, manages state, and communicates with the backend via a typed Axios client.
+2. **Express.js Backend**: Exposes REST endpoints (`/api/jobs`, `/api/ai`), enforces Zod validation, Helmet security headers, rate limiting, and HTML sanitization.
+3. **MongoDB Atlas**: Serves as the primary persistence layer storing job postings with indexed fields and compound filters.
+4. **Redis + BullMQ**: Powers asynchronous task queuing (`ai-processing`) for reliable background processing.
+5. **Groq LLaMA-3.3-70b**: Executes ultra-low-latency AI inference for job description enhancement and executive summarization.
+
+---
+
+## ✨ Key Features
+
+- **Job Seeker Experience**:
+  - Full-screen responsive landing page with quick search and metrics.
+  - Multi-field filtering (title, company, category, workplace type, skills, and experience range).
+  - 10-job pagination with automatic reset on filter updates.
+  - Comprehensive job details view with sanitized HTML rendering.
+  - Dedicated on-demand **"✨ AI Summary"** feature.
+
+- **Employer / Recruiter Experience**:
+  - Intuitive job creation form with conditional location fields (Country/City required for Hybrid/WFO; hidden for WFH).
+  - Rich text description editor (React Quill) and interactive skills tag input.
+  - **"✨ Improve with AI"** — non-destructive preview dialog allowing review before applying AI-enhanced copy.
+
+- **Enterprise Reliability**:
+  - AI keys kept securely server-side; zero secrets leaked to the client bundle.
+  - Input sanitization via `sanitize-html` and `DOMPurify` to prevent XSS.
 
 ---
 

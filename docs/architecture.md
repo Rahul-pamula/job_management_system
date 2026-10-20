@@ -19,51 +19,9 @@ This was chosen over microservices because:
 
 ## System Diagram
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                  CLIENT (Next.js App Router)                 │
-│                                                             │
-│   /          → Landing Page                                 │
-│   /jobs      → Job Listing + Filters + Pagination           │
-│   /jobs/new  → Job Creation Form + AI Improve               │
-│   /jobs/:id  → Job Detail + AI Summary                      │
-│                                                             │
-│   Fetches data from backend via HTTP REST API               │
-└───────────────────────┬─────────────────────────────────────┘
-                        │ HTTP/REST (JSON)
-                        │ CORS: localhost:3000 only
-┌───────────────────────▼─────────────────────────────────────┐
-│                  SERVER (Express.js)                         │
-│                                                             │
-│  Middleware stack:                                          │
-│   helmet → cors → json → rateLimiter → routes              │
-│                                                             │
-│  Routes:                                                    │
-│   GET  /api/health                                          │
-│   GET  /api/jobs          → jobController.listJobs          │
-│   POST /api/jobs          → jobController.createJob         │
-│   GET  /api/jobs/:id      → jobController.getJob            │
-│   POST /api/ai/improve    → aiController.improveDesc        │
-│   POST /api/ai/summary    → aiController.summarizeJob       │
-│                                                             │
-│  Global error handler middleware (last in chain)            │
-└──────────┬─────────────────────────┬───────────────────────┘
-           │                         │
-┌──────────▼──────────┐   ┌──────────▼──────────────────────┐
-│  MongoDB Atlas       │   │  Redis + BullMQ                  │
-│                      │   │                                  │
-│  Collection: jobs    │   │  Queue: "ai-processing"          │
-│  Mongoose ODM        │   │  Worker: aiWorker.js             │
-│  Text search on      │   │  Jobs: improve, summary          │
-│  title + company     │   │  Retry: 3 attempts               │
-└─────────────────────┘   └──────────────┬───────────────────┘
-                                          │
-                           ┌──────────────▼──────────────────┐
-                           │  Groq API                        │
-                           │  Model: llama-3.3-70b-versatile  │
-                           │  Accessed server-side only       │
-                           └─────────────────────────────────┘
-```
+<p align="center">
+  <img src="architecture-diagram.png" alt="System Architecture Diagram" width="550" />
+</p>
 
 ---
 
