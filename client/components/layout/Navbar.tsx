@@ -3,10 +3,9 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, PlusCircle, Briefcase } from '../ui/Icons';
-
+import { Menu, X } from '@/components/ui/Icons';
+import Logo from '@/components/ui/Logo';
 import clsx from 'clsx';
-import Button from '../ui/Button';
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -14,24 +13,20 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { label: 'Find Jobs', href: '/jobs' },
+    { label: 'Post a Free Job', href: '/jobs/new' },
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-sm border-b border-gray-100 transition-all">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-sm group-hover:bg-indigo-700 transition-colors">
-              <Briefcase className="w-4 h-4" />
-            </div>
-            <span className="text-xl font-bold tracking-tight text-gray-900">
-              JobBoard<span className="text-indigo-600">.</span>
-            </span>
+    <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md transition-all">
+      <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-24 2xl:px-32">
+        <div className="flex items-center justify-between h-20">
+          {/* Brand Logo matching reference */}
+          <Link href="/" className="group focus:outline-none">
+            <Logo size="md" />
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
               return (
@@ -39,8 +34,8 @@ export const Navbar: React.FC = () => {
                   key={link.href}
                   href={link.href}
                   className={clsx(
-                    'text-sm font-medium transition-colors hover:text-indigo-600',
-                    isActive ? 'text-indigo-600 font-semibold' : 'text-gray-600'
+                    'text-sm font-medium transition-colors hover:text-black',
+                    isActive ? 'text-black font-semibold' : 'text-gray-600'
                   )}
                 >
                   {link.label}
@@ -49,16 +44,13 @@ export const Navbar: React.FC = () => {
             })}
           </nav>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA Pill matching reference */}
           <div className="hidden md:flex items-center gap-4">
-            <Link href="/jobs/new">
-              <Button
-                variant="primary"
-                size="md"
-                icon={<PlusCircle className="w-4 h-4" />}
-              >
-                Post a Free Job
-              </Button>
+            <Link
+              href="/jobs/new"
+              className="inline-flex items-center justify-center bg-black hover:bg-neutral-800 text-white text-sm font-medium px-6 py-2.5 rounded-full transition-all shadow-sm active:scale-95"
+            >
+              Post a Free Job
             </Link>
           </div>
 
@@ -67,7 +59,7 @@ export const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-lg text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="p-2 rounded-xl text-gray-700 hover:text-black hover:bg-gray-100 focus:outline-none"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -87,10 +79,8 @@ export const Navbar: React.FC = () => {
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
                 className={clsx(
-                  'block px-3 py-2 rounded-lg text-base font-medium transition-colors',
-                  isActive
-                    ? 'bg-indigo-50 text-indigo-700'
-                    : 'text-gray-700 hover:bg-gray-50'
+                  'block px-4 py-2.5 rounded-xl text-base font-medium transition-colors',
+                  isActive ? 'bg-gray-100 text-black font-semibold' : 'text-gray-700 hover:bg-gray-50'
                 )}
               >
                 {link.label}
@@ -101,16 +91,9 @@ export const Navbar: React.FC = () => {
             <Link
               href="/jobs/new"
               onClick={() => setMobileMenuOpen(false)}
-              className="w-full block"
+              className="w-full flex items-center justify-center bg-black hover:bg-neutral-800 text-white text-sm font-medium py-3 rounded-full transition-all"
             >
-              <Button
-                variant="primary"
-                size="md"
-                className="w-full justify-center"
-                icon={<PlusCircle className="w-4 h-4" />}
-              >
-                Post a Free Job
-              </Button>
+              Post a Free Job
             </Link>
           </div>
         </div>

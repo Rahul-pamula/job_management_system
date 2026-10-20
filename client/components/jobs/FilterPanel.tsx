@@ -92,7 +92,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
           </label>
           <input
             type="text"
-            placeholder="e.g. Frontend Engineer"
+            placeholder="e.g. AI Engineer, Full Stack"
             value={filters.title || ''}
             onChange={(e) => onFilterChange('title', e.target.value)}
             className="w-full px-3 py-2 text-sm bg-gray-50/50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all placeholder:text-gray-400"
@@ -106,7 +106,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
           </label>
           <input
             type="text"
-            placeholder="e.g. Stripe, Figma"
+            placeholder="e.g. Microsoft, Google, OpenAI"
             value={filters.companyName || ''}
             onChange={(e) => onFilterChange('companyName', e.target.value)}
             className="w-full px-3 py-2 text-sm bg-gray-50/50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all placeholder:text-gray-400"

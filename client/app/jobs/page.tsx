@@ -119,20 +119,20 @@ function JobsContent() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div className="w-full px-6 sm:px-10 lg:px-16 xl:px-24 2xl:px-32 py-10">
       {/* Page Header */}
       <div className="mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">
-          Explore Opportunities
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-950 tracking-tight">
+          Find Jobs
         </h1>
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="text-base text-gray-500 mt-1">
           Search and filter verified positions across engineering, product, and design.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
         {/* Left Sidebar Filter Panel */}
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-4 xl:col-span-3">
           <FilterPanel
             filters={currentFilters}
             onFilterChange={handleFilterChange}
@@ -142,7 +142,7 @@ function JobsContent() {
         </div>
 
         {/* Right Main Content */}
-        <div className="lg:col-span-3 space-y-6">
+        <div className="lg:col-span-8 xl:col-span-9 space-y-6">
           {/* Results Summary Bar */}
           <div className="flex items-center justify-between pb-2 border-b border-gray-100 text-sm">
             <span className="font-medium text-gray-700">

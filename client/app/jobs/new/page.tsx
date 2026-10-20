@@ -27,7 +27,7 @@ export default function NewJobPage() {
           <span>Free Job Listing</span>
         </div>
         <h1 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
-          Post a Free Opportunity
+          Post a Free Job
         </h1>
         <p className="text-sm text-gray-500">
           Fill in the details below. Our integrated Groq AI can help you refine and polish your job description before publishing.

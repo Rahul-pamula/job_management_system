@@ -4,9 +4,9 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
 export const metadata: Metadata = {
-  title: 'JobBoard — AI-Powered Job Discovery & Posting Platform',
+  title: 'JobShuru — Get Hired Faster and Smarter',
   description:
-    'Find top engineering, design, and product opportunities or post your job free with AI assistance.',
+    'Browse, search and discover curated jobs easily with AI assistance.',
 };
 
 export default function RootLayout({

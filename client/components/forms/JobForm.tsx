@@ -181,7 +181,7 @@ export const JobForm: React.FC = () => {
               </label>
               <input
                 type="text"
-                placeholder="e.g. Senior Frontend Engineer"
+                placeholder="e.g. Senior AI Research Engineer / Full Stack"
                 {...register('title')}
                 className="w-full px-3.5 py-2.5 text-sm bg-gray-50/50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all"
               />
@@ -198,7 +198,7 @@ export const JobForm: React.FC = () => {
               </label>
               <input
                 type="text"
-                placeholder="e.g. Acme Corp"
+                placeholder="e.g. Microsoft, Google, or OpenAI"
                 {...register('companyName')}
                 className="w-full px-3.5 py-2.5 text-sm bg-gray-50/50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white transition-all"
               />

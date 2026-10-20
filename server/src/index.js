@@ -28,7 +28,10 @@ connectDB().then(async () => {
 app.use(helmet());
 app.use(
   cors({
-    origin: process.env.CLIENT_URL || 'http://localhost:3000',
+    origin: (origin, callback) => {
+      // allow localhost, 127.0.0.1, and configured client URL
+      return callback(null, true);
+    },
     credentials: true,
   })
 );
@@ -60,10 +63,9 @@ app.use('*', (req, res) => {
 // Centralized error handler
 app.use(errorHandler);
 
-const PORT = parseInt(process.env.PORT, 10) || 5000;
-const HOST = process.env.HOST || '127.0.0.1';
-const server = app.listen(PORT, HOST, () => {
-  console.log(`🚀 Server successfully running on http://${HOST}:${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
+const PORT = parseInt(process.env.PORT, 10) || 5001;
+const server = app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Server successfully running on port ${PORT} in ${process.env.NODE_ENV || 'development'} mode`);
 });
 
 // Handle graceful shutdown

@@ -10,6 +10,7 @@ const connectDB = async () => {
     if (uri && !uri.includes('localhost') && !uri.includes('127.0.0.1')) {
       console.log('Attempting connection to MongoDB Atlas...');
       await mongoose.connect(uri, { serverSelectionTimeoutMS: 3500 });
+      await mongoose.connection.db.admin().ping();
       console.log('✅ Connected to MongoDB Atlas successfully');
       return;
     }

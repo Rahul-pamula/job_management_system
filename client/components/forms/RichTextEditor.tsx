@@ -44,7 +44,7 @@ const formats = [
 export const RichTextEditor: React.FC<RichTextEditorProps> = ({
   value,
   onChange,
-  placeholder = 'Describe role responsibilities, requirements, and company perks...',
+  placeholder = 'Describe role responsibilities, tech stack, and qualifications (our integrated Groq AI can automatically polish this)...',
   error,
 }) => {
   return (
